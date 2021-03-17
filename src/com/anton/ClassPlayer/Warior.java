@@ -4,7 +4,6 @@ import com.anton.Player;
 
 public class Warior extends Player {
 
-
     public Warior(String name) {
         super(name);
         setHealth(10+getContitutionModify());

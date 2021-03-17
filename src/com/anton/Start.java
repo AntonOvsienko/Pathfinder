@@ -1,6 +1,5 @@
 package com.anton;
 
-import com.anton.ClassEnemy.*;
 import com.anton.ClassPlayer.*;
 
 import java.io.FileNotFoundException;
@@ -34,15 +33,15 @@ public class Start {
                     }
             }while(exit);
 
-        men=new Warior("Вася");
-        Player enemy=new Skelet(1);
-        Visual.visual();
-        FightAlgorithm.oneVSone(men,enemy);
-        if (!men.isLife()){
-            System.out.println(men.getName()+" упал замертво");
-        }
-        if (!enemy.isLife()){
-            System.out.println(enemy.getName()+" упал замертво");
-        }
+//        men=new Warior("Вася");
+//        Player enemy=new Skelet(1);
+//        Visual.visual();
+//        FightAlgorithm.oneVSone(men,enemy);
+//        if (!men.isLife()){
+//            System.out.println(men.getName()+" упал замертво");
+//        }
+//        if (!enemy.isLife()){
+//            System.out.println(enemy.getName()+" упал замертво");
+//        }
     }
 }
