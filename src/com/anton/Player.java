@@ -1,5 +1,6 @@
 package com.anton;
 
+import java.util.HashMap;
 import java.util.Random;
 
 public class Player {
@@ -24,108 +25,21 @@ public class Player {
     private int attackmodificator;       //модификатор урон
     private int basicmodificatorattack;  //базовый модификатор атаки
     private int defense;                 //параметр защиты
+    private boolean IDplayer;                 //состояние игрок(true)-враг(false)
+    private HashMap<String, Integer[]> weapon;  //виды действий атаки
 
-    Random random=new Random();
-
-    public Player (String name,int strength,int dexterity,int costitution, int intellegence,int wisdom, int chrisma) {
-        this.name = name;
-        this.strength = strength;
-        this.dexterity = dexterity;
-        this.costitution = costitution;
-        this.intellegence = intellegence;
-        this.wisdom = wisdom;
-        this.charisma = chrisma;
-
-        if (strength!=0){
-            this.strengthModify=(strength-10)/2;}
-        else{
-            this.strengthModify=0;
-        }
-        if (dexterity!=0){
-            this.dexterityModify=(dexterity-10)/2;}
-        else{
-            this.dexterityModify=0;
-        }
-        if (costitution!=0){
-            this.contitutionModify=(costitution-10)/2;}
-        else{
-            this.contitutionModify=0;
-        }
-        if (intellegence!=0){
-            this.intellegenceModify=(intellegence-10)/2;}
-        else{
-            this.intellegenceModify=0;
-        }
-        if (wisdom!=0){
-            this.wisdomModify=(wisdom-10)/2;}
-        else{
-            this.wisdomModify=0;
-        }
-        if (charisma!=0){
-            this.charismaModify=(charisma-10)/2;}
-        else{
-            this.charismaModify=0;
-        }
-
-    }
-    public Player (String name){
-        this.name=name;
-        this.strength = randomNumber(6);
-        this.dexterity = randomNumber(6);
-        this.costitution = randomNumber(6);
-        this.intellegence = randomNumber(6);
-        this.wisdom = randomNumber(6);
-        this.charisma = randomNumber(6);
-
-        if (strength!=0){
-            this.strengthModify=(strength-10)/2;}
-        else{
-            this.strengthModify=0;
-        }
-        if (dexterity!=0){
-            this.dexterityModify=(dexterity-10)/2;}
-        else{
-            this.dexterityModify=0;
-        }
-        if (costitution!=0){
-            this.contitutionModify=(costitution-10)/2;}
-        else{
-            this.contitutionModify=0;
-        }
-        if (intellegence!=0){
-            this.intellegenceModify=(intellegence-10)/2;}
-        else{
-            this.intellegenceModify=0;
-        }
-        if (wisdom!=0){
-            this.wisdomModify=(wisdom-10)/2;}
-        else{
-            this.wisdomModify=0;
-        }
-        if (charisma!=0){
-            this.charismaModify=(charisma-10)/2;}
-        else{
-            this.charismaModify=0;
-        }
-    }
-
-    public Player() {
-    }
-
-    private int randomNumber(int i){
-        return (random.nextInt(i)+1)+(random.nextInt(i)+1)+6;
-    }
 
     @Override
     public String toString() {
-        return  name + " величайший " + classPlayer + " с характеристиками"+
-                "\nСила: " + strength +
-                "\nЛовкость: " + dexterity +
-                "\nВыносливость: " + costitution +
-                "\nИнтеллект: " + intellegence +
-                "\nМудрость: " + wisdom +
-                "\nХаризма: " + charisma +
-                "\nЗдоровье: " + health;
+        return  classPlayer + " " + name  + " с характеристиками"+
+                ": Сил " + strength +
+                ", Лов " + dexterity +
+                ", Вын " + costitution +
+                ", Инт " + intellegence +
+                ", Муд " + wisdom +
+                ", Хар " + charisma +
+                ", Здоровье " + health;
+
     }
 
     public String getName() {
@@ -288,11 +202,27 @@ public class Player {
         this.basicmodificatorattack = basicmodificatorattack;
     }
 
+    public boolean isIDplayer() {
+        return IDplayer;
+    }
+
+    public void setIDplayer(boolean IDplayer) {
+        this.IDplayer = IDplayer;
+    }
+
     public boolean isLife() {
         return life;
     }
 
     public void setLife(boolean life) {
         this.life = life;
+    }
+
+    public HashMap<String, Integer[]> getWeapon() {
+        return weapon;
+    }
+
+    public void setWeapon(HashMap<String, Integer[]> weapon) {
+        this.weapon = weapon;
     }
 }
