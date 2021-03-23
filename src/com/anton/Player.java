@@ -1,6 +1,8 @@
 package com.anton;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Random;
 
 public class Player {
@@ -27,20 +29,10 @@ public class Player {
     private int defense;                 //параметр защиты
     private boolean IDplayer;                 //состояние игрок(true)-враг(false)
     private HashMap<String, Integer[]> weapon;  //виды действий атаки
-
-
-    @Override
-    public String toString() {
-        return  classPlayer + " " + name  + " с характеристиками"+
-                ": Сил " + strength +
-                ", Лов " + dexterity +
-                ", Вын " + costitution +
-                ", Инт " + intellegence +
-                ", Муд " + wisdom +
-                ", Хар " + charisma +
-                ", Здоровье " + health;
-
-    }
+    private int experience;              //текущий опыт (персонажа и противника который можно получить после его убийства)
+    private int experiencemax;           //максимальный опыт на текущем уровне
+    private int lvl;                     //текущий лвл игрока
+    private ArrayList<Integer> exptable;      //таблица получения опыта
 
     public String getName() {
         return name;
@@ -224,5 +216,37 @@ public class Player {
 
     public void setWeapon(HashMap<String, Integer[]> weapon) {
         this.weapon = weapon;
+    }
+
+    public int getExperience() {
+        return experience;
+    }
+
+    public void setExperience(int experience) {
+        this.experience = experience;
+    }
+
+    public int getExperiencemax() {
+        return experiencemax;
+    }
+
+    public void setExperiencemax(int experiencemax) {
+        this.experiencemax = experiencemax;
+    }
+
+    public int getLvl() {
+        return lvl;
+    }
+
+    public void setLvl(int lvl) {
+        this.lvl = lvl;
+    }
+
+    public ArrayList<Integer> getExptable() {
+        return exptable;
+    }
+
+    public void setExptable(ArrayList<Integer> exptable) {
+        this.exptable = exptable;
     }
 }

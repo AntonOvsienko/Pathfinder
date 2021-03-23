@@ -3,64 +3,17 @@ package com.anton;
 import com.anton.ClassPlayer.Warior;
 
 import java.io.*;
-import java.util.HashMap;
-import java.util.InputMismatchException;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
-public class PlayerInitialized {
+public class PlayerInitialized{
+
     static Scanner scanner=new Scanner(System.in);
     static int bonuspoint=15;
     static int number=0;
     static int[] temp=new int[]{10,10,10,10,10,10};
 
-    public static Player initialized() throws IOException, ClassNotFoundException {
-        Player men;
-        boolean exit;
-        Scanner scanner=new Scanner(System.in);
-        System.out.println("Введите имя персонажа");
-        String name=scanner.nextLine();
-        do{
-            exit=true;
 
-            System.out.println("Выбрать созданного персонажа (1), с выбранными характеристиками (2) или сохранённого (3)");
-            int start=scanner.nextInt();
-
-            switch (start){
-                case 1:
-                    men=createdCharacters();
-                    return men;
-                case 2:
-                    System.out.println("Выберите класс, на данный момент доступен только (Воин)");
-                    String classname=scanner.nextLine();
-                    if (!classname.equals("Воин")){
-                        System.out.println("Неверный класс");
-
-                    }else{
-                    if (classname.equals("Воин")){
-                    int[] character=character();
-                    men=new Warior(name,"Воин",character[0],character[1],character[2],character[3],character[4],
-                            character[5]);
-                    return men;
-                    }
-                    break;
-                    }
-                case 3:
-                    ObjectInputStream ois=new ObjectInputStream(new FileInputStream("PersonCharact.bin"));
-                    int[] character2=(int[]) ois.readObject();
-                    men=new Warior(name,"Воин",character2[0],character2[1],character2[2],character2[3],character2[4],
-                            character2[5]);
-                    ois.close();
-                    return men;
-                default:
-                    System.out.println("Неверное значение введите ещё раз");
-
-            }
-        }while(exit);
-        return null;
-    }
-
-    private static int[] character() throws IOException{
+    public static int[] character() throws IOException{
         boolean end;
         System.out.println("У вас есть лишних " + bonuspoint + " очков, по умолчанию все характеристики равны " +
                 "10 вы вольны изменить их согласно таблице, но не меньше 7 и не больше 18");

@@ -10,14 +10,17 @@ public class Skelet extends Player{
     private int armorclass;
 
     public Skelet(int KO) {
+        setClassPlayer("Cкелет");
+        setName("Скелет");
+
+
         HashMap<String,Integer[]> maptemp=new HashMap<>();
+        maptemp.put("сломанный скирт", new Integer[]{0,6});
         maptemp.put("сломанный скирт", new Integer[]{0,6});
         maptemp.put("удар когтями", new Integer[]{1,5});
         maptemp.put("двойной удар когтями", new Integer[]{2,6});
         setWeapon(maptemp);
 
-        setClassPlayer("Cкелет");
-        setName("Скелет");
         setInitiative(6);
         setArmorclass(16);
 

@@ -1,6 +1,5 @@
 package com.anton;
 
-import com.anton.TextBattle.HitSuccess;
 
 import java.io.FileNotFoundException;
 import java.util.Random;
@@ -20,20 +19,20 @@ public class FightAlgorithm {
             player2=player;
             player1=enemy;
         }
-        Visual.battle1vs1(player1,player2);
-        System.out.println("Инициатива на стороне " + player1.getName());
-        do{
-            Visual.health1vs1(player1,player2);
-            Player player3;
-            battle(player1, player2);
-            if (player1.getHealth()<=0||player2.getHealth()<=0){
-                win=false;
-            }else{
-                player3=player1;
-                player1=player2;
-                player2=player3;
-            }
-        }while(win);
+//        Visual.battle1vs1(player1,player2);
+//        System.out.println("Инициатива на стороне " + player1.getName());
+//        do{
+//            Visual.health1vs1(player1,player2);
+//            Player player3;
+//            battle(player1, player2);
+//            if (player1.getHealth()<=0||player2.getHealth()<=0){
+//                win=false;
+//            }else{
+//                player3=player1;
+//                player1=player2;
+//                player2=player3;
+//            }
+//        }while(win);
     }
     public static void battle (Player player1,Player player2) throws InterruptedException, FileNotFoundException {
         Random random=new Random();
@@ -67,19 +66,19 @@ public class FightAlgorithm {
             player2.setHealth(player2.getHealth()-damage);
             return;
         }
-
-        if ((attack+player1.getAttackmodificator())>player2.getDefense()){
-            damage+=random.nextInt(player1.getWeapondamage())+1;
-            System.out.println(player1.getName()+ " " + HitSuccess.hit()+" на "+damage);
-            player2.setHealth(player2.getHealth()-damage);
-        } else {
-            System.out.println(player2.getName()+ " " + HitSuccess.nohit());
-        }
+//        if ((attack+player1.getAttackmodificator())>player2.getDefense()){
+//            damage+=random.nextInt(player1.getWeapondamage())+1;
+//            System.out.println(player1.getName()+ " " + HitSuccess.hit()+" на "+damage);
+//            player2.setHealth(player2.getHealth()-damage);
+//        } else {
+//            System.out.println(player2.getName()+ " " + HitSuccess.nohit());
+//        }
         if (player1.getHealth()<=0){
             player1.setLife(false);}
         if (player2.getHealth()<=0){
             player2.setLife(false);
         }
     }
+
 
 }
