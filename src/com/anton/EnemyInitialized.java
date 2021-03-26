@@ -4,11 +4,11 @@ import com.anton.ClassEnemy.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EnemyInitialized extends Player{
+public class EnemyInitialized {
     private List<Player> enemy;
 
     public EnemyInitialized(){
-        enemy.add(new Skelet(0));
+        enemy.add(new Skelet(1));
         enemy.add(new Skelet(1));
     }
 

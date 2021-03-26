@@ -6,12 +6,43 @@ import java.io.*;
 import java.util.*;
 
 public class PlayerInitialized{
-
     static Scanner scanner=new Scanner(System.in);
     static int bonuspoint=15;
     static int number=0;
     static int[] temp=new int[]{10,10,10,10,10,10};
 
+    public static <E extends Player>E Initial() throws IOException, ClassNotFoundException {
+        Scanner scanner=new Scanner(System.in);
+        System.out.println("Введите имя персонажа");
+        String name=scanner.nextLine();
+        System.out.println("Выберите класс персонажа из списка: Воин");
+        do{
+        String classname=scanner.nextLine();
+        if (classname.equalsIgnoreCase("Воин")){
+            do {
+                System.out.println("Выбрать характеристики созданного персонажа (1) или из сохранённого (2)");
+                int start = DataInput.InputInteger();
+                if (start == 1) {
+                    int[] character = PlayerInitialized.character();
+                    Warior men = new Warior(name, "Воин", character[0], character[1], character[2], character[3], character[4],
+                            character[5]);
+                    return (E) men;
+                } else if (start == 2) {
+                    ObjectInputStream ois = new ObjectInputStream(new FileInputStream("PersonCharact.bin"));
+                    int[] character2 = (int[]) ois.readObject();
+                    Warior men = new Warior(name, "Воин", character2[0], character2[1], character2[2], character2[3], character2[4],
+                            character2[5]);
+                    ois.close();
+                    return (E) men;
+                } else {
+                    System.out.println("Неверное значение введите ещё раз");
+                }
+            }while(true);
+            }else{
+                System.out.println("Неверный класс");
+            }
+        }while (true);
+    }
 
     public static int[] character() throws IOException{
         boolean end;
@@ -27,7 +58,7 @@ public class PlayerInitialized{
                   "\n4.Интеллект-"+temp[3]+"\n5.Мудрость-"+temp[4]+"\n6.Харизма-"+temp[5]+
                   "\n7.Таблица изменения характеристик" + "\n8.Сохранить" + "\n9.Выход");
             end=true;
-            number=scanner.nextInt();
+            number=DataInput.InputInteger();
             if (number==7){
                 tablCharacter();
                 continue;
@@ -46,7 +77,7 @@ public class PlayerInitialized{
               continue;
             }
             System.out.println("Введите новое значение");
-            number2=scanner.nextInt();
+            number2=DataInput.InputInteger();
            if (number2<7||number2>18){
              System.out.println("Неверное значение. Введённое число должно быть в диапазоне 7-18");
              continue;
@@ -108,5 +139,7 @@ public class PlayerInitialized{
     private static Player createdCharacters(){
         return null;
     }
+
+
 
 }

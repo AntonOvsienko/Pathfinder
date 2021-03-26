@@ -1,29 +1,28 @@
 package com.anton.ClassEnemy;
 
 import com.anton.Player;
+import com.anton.TextBattle.HitSuccess;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.io.FileNotFoundException;
+import java.util.*;
 
 public class Skelet extends Player{
-    private int initiative;
-    private int armorclass;
+    private static Scanner scanner=new Scanner(System.in);
+    Random random=new Random();
 
     public Skelet(int KO) {
-        setClassPlayer("Cкелет");
-        setName("Скелет");
+        super(KO);
 
+        HashMap<String,Integer[]> action=new HashMap<>();
+        action.put("удар сломанным скиртом", new Integer[]{0,6});
+        action.put("удар когтями", new Integer[]{1,5});
+        action.put("двойной удар когтями", new Integer[]{2,6});
+        List<String> surname= Arrays.asList("Cтарый","Ржавый","Фиолетовый","Зелёный","Трухлявый");
 
-        HashMap<String,Integer[]> maptemp=new HashMap<>();
-        maptemp.put("сломанный скирт", new Integer[]{0,6});
-        maptemp.put("сломанный скирт", new Integer[]{0,6});
-        maptemp.put("удар когтями", new Integer[]{1,5});
-        maptemp.put("двойной удар когтями", new Integer[]{2,6});
-        setWeapon(maptemp);
-
+        setClassPlayer("Скелет");
+        setName(surname.get(random.nextInt(surname.size()-1)) + " скелет");
+        setWeapon(action);
         setInitiative(6);
-        setArmorclass(16);
-
         setStrength(15);
         setDexterity(14);
         setCostitution(0);
@@ -31,67 +30,63 @@ public class Skelet extends Player{
         setIntellegence(0);
         setWisdom(10);
 
-        if (getStrength()>6){                                //Модификаторы
-            setStrengthModify((getStrength()-10)/2);
-        } else{
-            setStrengthModify(0);
-        }
-        if (getDexterity()>6){
-            setDexterityModify((getDexterity()-10)/2);
-        } else{
-            setDexterityModify(0);
-        }
-        if (getCostitution()>6){
-            setContitutionModify((getCostitution()-10)/2);
-        }
-        else{
-            setContitutionModify(0);
-        }
-        if (getIntellegence()>6){
-            setIntellegenceModify((getIntellegence()-10)/2);
-        }
-        else{
-            setIntellegenceModify(0);
-        }
-        if (getWisdom()>6){
-            setWisdomModify((getWisdom()-10)/2);
-        }
-        else{
-            setWisdomModify(0);
-        }
-        if (getCharisma()>6){
-            setCharismaModify((getCharisma()-10)/2);
-        }
-        else{
-            setCharismaModify(0);
-        }
-
         setHealth(4);
         setHealthmax(getHealth());
-
         setBasicmodificatorattack((int)KO*3/4);
-        setAttackmodificator(getStrengthModify()+getBasicmodificatorattack());
-
-        setDefense(10+getDexterityModify());
-        setWeapondamage(6);
+        setAttackmodificator(20+6);
+        setDefense(16);
         setLife(true);
         setIDplayer(false);
     }
 
-    public int getInitiative() {
-        return initiative;
-    }
+    public String Hit (List<Player> enemy) throws FileNotFoundException {
+        setDefenceonround(0);
+        setAtackonround(0);
+        int damage=0;
+        String results="";
+        int i=0;
+        int tableID=random.nextInt(getWeapon().size());
+        String[] tableIDstring=new String[getWeapon().size()];
+        Integer[][] tableIDinteger=new Integer[getWeapon().size()][2];
 
-    public void setInitiative(int initiative) {
-        this.initiative = initiative;
-    }
-
-    public int getArmorclass() {
-        return armorclass;
-    }
-
-    public void setArmorclass(int armorclass) {
-        this.armorclass = armorclass;
+        if (!enemy.get(0).isLife()){
+            return "";
+        }
+        for (Map.Entry<String,Integer[]> x:getWeapon().entrySet()){
+            tableIDstring[i]=x.getKey();
+            tableIDinteger[i]=x.getValue();
+            i++;
+        }
+        boolean run=true;
+        int x=0;
+        if (enemy.size()>1){
+            x=random.nextInt(enemy.size());
+        }else {
+            x=0;
+        }
+        int attacknominal=tableIDinteger[tableID][1]-tableIDinteger[tableID][0];
+        int attack=random.nextInt(20)+1;
+        if (attack==20) {
+            damage = random.nextInt(attacknominal)+1+tableIDinteger[tableID][0];
+            int attackdop = random.nextInt(20) + 1;
+            if (attackdop+getAttackmodificator() > enemy.get(x).getDefense()) {
+                damage += random.nextInt(attacknominal)+1+tableIDinteger[tableID][0];
+            }
+            enemy.get(x).setHealth(enemy.get(x).getHealth() - damage);
+            results=(getName()+" наносит критический урон "+ enemy.get(x).getName()+ " на " + damage);
+        } else if ((attack+getAttackmodificator())>enemy.get(x).getDefense()){
+            damage+=random.nextInt(attacknominal)+1+tableIDinteger[tableID][0];
+            enemy.get(x).setHealth(enemy.get(x).getHealth()-damage);
+            results=(getName() + " " + tableIDstring[tableID] + " на " + damage);
+        } else {
+            results=enemy.get(x).getName()+ " " + HitSuccess.nohit();
+        }
+        if (enemy.get(x).getHealth()<=0){
+            enemy.get(x).setHealth(0);
+            enemy.get(x).setLife(false);
+            results+=" и " +enemy.get(x).getName().toLowerCase()+  " был убит";
+        }
+        return results;
     }
 
 }

@@ -1,11 +1,9 @@
 package com.anton;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Random;
+import java.io.FileNotFoundException;
+import java.util.*;
 
-public class Player {
+public class Player{
     private boolean life;
     private String name;
     private String classPlayer;          //Класс игрока
@@ -21,6 +19,7 @@ public class Player {
     private int wisdomModify;            //Модификатор Мудрости
     private int charisma;                //Харизма
     private int charismaModify;          //Модификатор харизмы
+    private int basehealth;              //Базовое здоровье
     private int health;                  //Здоровье
     private int healthmax;               //Здоровье максимальное
     private int weapondamage;            //максимальный урон оружием
@@ -34,6 +33,28 @@ public class Player {
     private int lvl;                     //текущий лвл игрока
     private ArrayList<Integer> exptable;      //таблица получения опыта
 
+    private int KO;                      //Коэффициент опасности
+    private int initiative;              //Инициатива противника
+
+    private int defenceonround;          //доп защита на раунд
+    private int atackonround;            //доп атака на раунд
+
+    public Player (int KO){
+        this.KO=KO;
+    }
+
+    public Player(String name,String classPlayer,int strength,int dexterity,int costitution,int intellegence,
+                  int wisdom,int charisma) {
+        this.name=name;
+        this.classPlayer=classPlayer;
+        this.strength=strength;
+        this.dexterity=dexterity;
+        this.costitution=costitution;
+        this.intellegence=intellegence;
+        this.wisdom=wisdom;
+        this.charisma=charisma;
+    }
+    
     public String getName() {
         return name;
     }
@@ -51,14 +72,15 @@ public class Player {
     }
 
     public int getStrengthModify() {
-        return strengthModify;
-    }
-
-    public void setStrengthModify(int strengthModify) {
-        this.strengthModify = strengthModify;
+        if (strength>6){                                //Модификаторы
+            return (strength-10)/2;
+        } else{
+            return 0;
+        }
     }
 
     public int getDexterity() {
+
         return dexterity;
     }
 
@@ -67,11 +89,11 @@ public class Player {
     }
 
     public int getDexterityModify() {
-        return dexterityModify;
-    }
-
-    public void setDexterityModify(int dexterityModify) {
-        this.dexterityModify = dexterityModify;
+        if (dexterity>6){
+            return (dexterity-10)/2;
+        } else{
+            return 0;
+        }
     }
 
     public int getCostitution() {
@@ -83,11 +105,12 @@ public class Player {
     }
 
     public int getContitutionModify() {
-        return contitutionModify;
-    }
-
-    public void setContitutionModify(int contitutionModify) {
-        this.contitutionModify = contitutionModify;
+        if (costitution>6){
+            return (costitution-10)/2;
+        }
+        else{
+            return 0;
+        }
     }
 
     public int getIntellegence() {
@@ -99,11 +122,12 @@ public class Player {
     }
 
     public int getIntellegenceModify() {
-        return intellegenceModify;
-    }
-
-    public void setIntellegenceModify(int intellegenceModify) {
-        this.intellegenceModify = intellegenceModify;
+        if (intellegence>6){
+            return (intellegence-10)/2;
+        }
+        else{
+            return 0;
+        }
     }
 
     public int getWisdom() {
@@ -115,11 +139,12 @@ public class Player {
     }
 
     public int getWisdomModify() {
-        return wisdomModify;
-    }
-
-    public void setWisdomModify(int wisdomModify) {
-        this.wisdomModify = wisdomModify;
+        if (wisdom>6){
+            return  (wisdom-10)/2;
+        }
+        else{
+            return 0;
+        }
     }
 
     public int getCharisma() {
@@ -131,11 +156,12 @@ public class Player {
     }
 
     public int getCharismaModify() {
-        return charismaModify;
-    }
-
-    public void setCharismaModify(int charismaModify) {
-        this.charismaModify = charismaModify;
+        if (charisma>6){
+            return (charisma-10)/2;
+        }
+        else{
+            return 0;
+        }
     }
 
     public String getClassPlayer() {
@@ -155,7 +181,7 @@ public class Player {
     }
 
     public int getAttackmodificator() {
-        return attackmodificator;
+        return getStrengthModify()+getBasicmodificatorattack()+getAtackonround();
     }
 
     public void setAttackmodificator(int attackmodificator) {
@@ -163,7 +189,7 @@ public class Player {
     }
 
     public int getDefense() {
-        return defense;
+        return 10+getDexterityModify()+getDefenceonround();
     }
 
     public void setDefense(int defense) {
@@ -248,5 +274,76 @@ public class Player {
 
     public void setExptable(ArrayList<Integer> exptable) {
         this.exptable = exptable;
+    }
+
+    public int getKO() {
+        return KO;
+    }
+
+    public void setKO(int KO) {
+        this.KO = KO;
+    }
+
+    public int getInitiative() {
+        return initiative;
+    }
+
+    public void setInitiative(int initiative) {
+        this.initiative = initiative;
+    }
+
+    public String Hit(List<Player> enemy) throws FileNotFoundException {
+        return null;
+    }
+
+    public int getBasehealth() {
+        return basehealth;
+    }
+
+    public void setBasehealth(int basehealth) {
+        this.basehealth = basehealth;
+    }
+
+    public int getDefenceonround() {
+        return defenceonround;
+    }
+
+    public void setDefenceonround(int defenceonround) {
+        this.defenceonround = defenceonround;
+    }
+
+    public int getAtackonround() {
+        return atackonround;
+    }
+
+    public void setAtackonround(int atackonround) {
+        this.atackonround = atackonround;
+    }
+
+    @Override
+    public String toString() {
+        return "Player{" +
+                "name='" + name + '\'' +
+                ", classPlayer='" + classPlayer + '\'' +
+                ", strength=" + strength +
+                ", dexterity=" + dexterity +
+                ", costitution=" + costitution +
+                ", intellegence=" + intellegence +
+                ", wisdom=" + wisdom +
+                ", charisma=" + charisma +
+                ", health=" + health +
+                '}';
+
+    }
+    public void charactresLvlUp(int x){
+        Scanner scanner=new Scanner(System.in);
+        System.out.printf("1.Сила:          %-2d\n" +
+                "2.Ловкость:      %-2d\n" +
+                "3.Выносливость:  %-2d\n" +
+                "4.Интеллект:     %-2d\n" +
+                "5.Мудрость:      %-2d\n" +
+                "6.Харизма:       %-2d\n",strength,dexterity,costitution,intellegence,
+                wisdom,charisma);
+        int y=scanner.nextInt();
     }
 }

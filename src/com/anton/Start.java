@@ -12,7 +12,13 @@ import java.util.Scanner;
 
 
 public class Start {
+
     public static void main(String[] args) throws InterruptedException, IOException, ClassNotFoundException {
-        Warior men=Warior.initialized();
+        Player men=PlayerInitialized.Initial();
+        List<Player> enemy = new ArrayList<>();
+        enemy.add(new Skelet(1));
+        enemy.add(new Skelet(1));
+        enemy.add(new Skelet(1));
+        FightAlgorithm.Fight(men,enemy);
     }
 }
