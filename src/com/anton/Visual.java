@@ -12,15 +12,7 @@ public class Visual {
     public static void visual(){
         System.out.println("-------------------------------------------");
     }
-    public static void battle1vs1(Player player1,Player player2){
 
-        System.out.println("--------------------------------");
-        System.out.printf("Здоровье:%2s/%-2s |  Здоровье:%2s/%-2s\n",player1.getHealth(),player1.getHealthmax(),player2.getHealth(),player2.getHealthmax());
-        System.out.printf("Мод.атак:%2s    |  Мод.атак:%2s\n",player1.getAttackmodificator(),player2.getAttackmodificator());
-        System.out.printf("Защита:  %2s    |  Защита:  %2s\n",player1.getDefense(),player2.getDefense());
-
-
-    }
     public static void health1vs1(Player player1,Player player2){
         System.out.printf("%-10s        |     %-10s\n",player1.getName(),player2.getName());
         System.out.printf("Здоровье:%2d/%-2d    |     Здоровье:%2d/%-2d\n",player1.getHealth(),player1.getHealthmax(),player2.getHealth(),player2.getHealthmax());
@@ -84,11 +76,13 @@ public class Visual {
         for (int i=0;i< player.size();i++){
             if (player.get(i).isIDplayer()) {
                 System.out.print(GREEN);
-                System.out.printf("\u2551 Атака макс:%-3d \u2551",player.get(i).getAttackmodificator()+20);
+                System.out.printf("\u2551 Атака макс:%-3d \u2551",player.get(i).getAttackmodificator
+                        (player.get(i).getLvl())+20);
                 System.out.print(RESET);
             } else{
                 System.out.print(RED);
-                System.out.printf("    \u2551 Атака макс:%-9d\u2551",player.get(i).getAttackmodificator()+20);
+                System.out.printf("    \u2551 Атака макс:%-9d\u2551",player.get(i).getAttackmodificator
+                        (player.get(i).getBasicmodificatorattack())+20);
                 System.out.print(RESET);
             }
         }

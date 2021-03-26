@@ -17,14 +17,14 @@ public class FightAlgorithm {
         Collections.sort(ListParticipation,InitiativeComparator);
         while (true){
                 System.out.println("Раунд " + ++count);
-                Visual.BattleVisual(ListParticipation);
+            Visual.BattleVisual(ListParticipation);
                 String[] textotals=new String[ListParticipation.size()];
             for (int i=0;i<ListParticipation.size();i++){
                 if(!ListParticipation.get(i).isLife()) {
                      textotals[i]="";
                      continue;
                 }
-                textotals[i]=ListParticipation.get(i).Hit(ListOpponent(ListParticipation.get(i),ListParticipation));
+                textotals[i]=ListParticipation.get(i).Hit(ListOpponent(ListParticipation.get(i),ListParticipation),ListParticipation);
             }
             for (String x:textotals){
                 System.out.println(x);

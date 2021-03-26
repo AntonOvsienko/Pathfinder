@@ -39,7 +39,7 @@ public class Skelet extends Player{
         setIDplayer(false);
     }
 
-    public String Hit (List<Player> enemy) throws FileNotFoundException {
+    public String Hit (List<Player> enemy,List<Player> all) throws FileNotFoundException {
         setDefenceonround(0);
         setAtackonround(0);
         int damage=0;
@@ -69,12 +69,12 @@ public class Skelet extends Player{
         if (attack==20) {
             damage = random.nextInt(attacknominal)+1+tableIDinteger[tableID][0];
             int attackdop = random.nextInt(20) + 1;
-            if (attackdop+getAttackmodificator() > enemy.get(x).getDefense()) {
+            if (attackdop+getAttackmodificator(getBasicmodificatorattack()) > enemy.get(x).getDefense()) {
                 damage += random.nextInt(attacknominal)+1+tableIDinteger[tableID][0];
             }
             enemy.get(x).setHealth(enemy.get(x).getHealth() - damage);
-            results=(getName()+" наносит критический урон "+ enemy.get(x).getName()+ " на " + damage);
-        } else if ((attack+getAttackmodificator())>enemy.get(x).getDefense()){
+            results=(getName()+" наносит критический урон "+ enemy.get(x).getName().toLowerCase()+ " на " + damage);
+        } else if ((attack+getAttackmodificator(getBasicmodificatorattack()))>enemy.get(x).getDefense()){
             damage+=random.nextInt(attacknominal)+1+tableIDinteger[tableID][0];
             enemy.get(x).setHealth(enemy.get(x).getHealth()-damage);
             results=(getName() + " " + tableIDstring[tableID] + " на " + damage);

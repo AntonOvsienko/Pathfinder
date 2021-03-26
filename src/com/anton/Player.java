@@ -1,9 +1,12 @@
 package com.anton;
 
+import com.anton.Inventory.Inventory;
+
 import java.io.FileNotFoundException;
 import java.util.*;
 
 public class Player{
+
     private boolean life;
     private String name;
     private String classPlayer;          //Класс игрока
@@ -25,13 +28,18 @@ public class Player{
     private int weapondamage;            //максимальный урон оружием
     private int attackmodificator;       //модификатор урон
     private int basicmodificatorattack;  //базовый модификатор атаки
+    private int[][] tablemodificatorattack;  //Базвый модификатор в зависимости отуровня
     private int defense;                 //параметр защиты
     private boolean IDplayer;                 //состояние игрок(true)-враг(false)
     private HashMap<String, Integer[]> weapon;  //виды действий атаки
     private int experience;              //текущий опыт (персонажа и противника который можно получить после его убийства)
     private int experiencemax;           //максимальный опыт на текущем уровне
     private int lvl;                     //текущий лвл игрока
-    private ArrayList<Integer> exptable;      //таблица получения опыта
+    private ArrayList<Integer> exptable;   //таблица получения опыта
+    private Inventory weaponequep;         //экипированное оружие
+    private Inventory armorequep;          //экипированная броня
+    private Inventory shieldequep;        //экипированный щит
+    private ArrayList<Inventory> personthings; //личные вещи
 
     private int KO;                      //Коэффициент опасности
     private int initiative;              //Инициатива противника
@@ -180,8 +188,8 @@ public class Player{
         this.health = health;
     }
 
-    public int getAttackmodificator() {
-        return getStrengthModify()+getBasicmodificatorattack()+getAtackonround();
+    public int getAttackmodificator(int atmodificator) {
+        return getStrengthModify()+atmodificator+getAtackonround();
     }
 
     public void setAttackmodificator(int attackmodificator) {
@@ -292,7 +300,7 @@ public class Player{
         this.initiative = initiative;
     }
 
-    public String Hit(List<Player> enemy) throws FileNotFoundException {
+    public String Hit(List<Player> players, List<Player> enemy) throws FileNotFoundException {
         return null;
     }
 
@@ -318,6 +326,22 @@ public class Player{
 
     public void setAtackonround(int atackonround) {
         this.atackonround = atackonround;
+    }
+
+    public int[][] getTablemodificatorattack() {
+        return tablemodificatorattack;
+    }
+
+    public void setTablemodificatorattack(int[][] tablemodificatorattack) {
+        this.tablemodificatorattack = tablemodificatorattack;
+    }
+
+    public ArrayList<Inventory> getPersonthings() {
+        return personthings;
+    }
+
+    public void setPersonthings(ArrayList<Inventory> personthings) {
+        this.personthings = personthings;
     }
 
     @Override

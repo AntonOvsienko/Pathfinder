@@ -4,6 +4,7 @@ import com.anton.DataInput;
 import com.anton.Player;
 import com.anton.PlayerInitialized;
 import com.anton.TextBattle.HitSuccess;
+import com.anton.Visual;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -18,11 +19,14 @@ public class Warior extends Player {
                   int wisdom,int charisma) {
 
         super(name,classPlayer,strength,dexterity,costitution,intellegence,wisdom,charisma);
+        setTablemodificatorattack(new int[][]{{1},{2},{3},{4},{5},{6,1},{7,2},{8,3},
+                {9,4},{10,5},{11,6,1},{12,7,2},{13,8,3},{14,9,4},{15,10,5},{16,11,6,1},
+                {17,12,7,2},{18,13,8,3},{19,14,9,4},{20,15,10,5}});
         setBasehealth(10);                                  //Базовое здоровье
         setHealth(getBasehealth()+getContitutionModify());  //ХП текущая
         setHealthmax(getHealth());                          //ХП максимальная
-
-        setBasicmodificatorattack(3);             //(БМА) Базовый модификатор атаки
+        setLvl(1);
+        setBasicmodificatorattack(1);             //(БМА) Базовый модификатор атаки
 
         setWeapondamage(3);                       //максимальный урон оружием
         setLife(true);                            //состояние живой или мёртвый
@@ -65,7 +69,7 @@ public class Warior extends Player {
         return null;
     }
 
-    public String Hit (List<Player> enemy) throws FileNotFoundException {
+    public String Hit (List<Player> enemy,List<Player> all) throws FileNotFoundException {
         setDefenceonround(0);
         setAtackonround(0);
         String results="";
@@ -74,12 +78,30 @@ public class Warior extends Player {
         while (true){
         System.out.println("Выберите действие в бою");
         System.out.println("1.Полная атака");
-        System.out.println("Выберите действие в бою");
-        System.out.println("Выберите действие в бою");
-        System.out.println("Выберите действие в бою");
-        break;
+        System.out.println("2.Осторожная атака");
+        System.out.println("3.Глухая оборона+отхил(15%) без атаки");
+        int choice=DataInput.InputInteger();
+        if (choice==1){
+            Visual.BattleVisual(all);
+            break;
+        } else if (choice==2){
+            setDefenceonround(4);
+            setAtackonround(-4);
+            Visual.BattleVisual(all);
+            break;
+            }else if (choice == 3){
+                setDefenceonround(6);
+                setHealth(getHealth()+(int)Math.round((double)getHealthmax()*15/100));
+                    if (getHealth()>getHealthmax()){
+                      setHealth(getHealthmax());
+                }
+                    return getName() + " стоит в глухой защите";
+            }else{
+            System.out.println("Цифра вне диапазона");
         }
-
+    }
+        for(int z=0;z<getTablemodificatorattack()[getLvl()-1].length;z++){
+            int atmodificator=getTablemodificatorattack()[getLvl()-1][z];
         if (enemy.size()>1){
             do {
                 System.out.println(getName()+ " " +getHealth()+"/"+getHealthmax()+" выберите противника:");
@@ -103,12 +125,12 @@ public class Warior extends Player {
         if (attack==20) {
             damage = random.nextInt(getWeapondamage())+getStrengthModify();
             int attackdop = random.nextInt(20) + 1;
-            if (attackdop+getAttackmodificator() > enemy.get(x).getDefense()) {
+            if (attackdop+getAttackmodificator(atmodificator) > enemy.get(x).getDefense()) {
                 damage += random.nextInt(getWeapondamage())+getStrengthModify();
             }
             enemy.get(x).setHealth(enemy.get(x).getHealth() - damage);
-            results=(getName()+" наносит критический урон "+ enemy.get(x).getName());
-        } else if ((attack+getAttackmodificator())>enemy.get(x).getDefense()){
+            results=(getName()+" наносит критический урон "+ enemy.get(x).getName().toLowerCase());
+        } else if ((attack+getAttackmodificator(atmodificator))>enemy.get(x).getDefense()){
             damage+=random.nextInt(getWeapondamage())+1+getStrengthModify();
             enemy.get(x).setHealth(enemy.get(x).getHealth()-damage);
             results=(getName()+ " " + HitSuccess.hit()+" на "+damage);
@@ -119,6 +141,7 @@ public class Warior extends Player {
             enemy.get(x).setHealth(0);
             enemy.get(x).setLife(false);
             results+=" и "+ enemy.get(x).getName().toLowerCase() + " был убит";
+        }
         }
         return results;
     }
@@ -134,8 +157,8 @@ public class Warior extends Player {
         setLvl(getLvl()+1);
         setExperience(getExptable().get(getLvl()-1)+remaningexp);
         setExperiencemax(getExptable().get(getLvl()));
-        System.out.println("Какой из навыков увеличить на +"+(2+getIntellegenceModify()));
-        charactresLvlUp(2+getIntellegenceModify());
+        System.out.println("Какую из характеристик увеличить на + 1");
+        charactresLvlUp(1);
         }
     }
 
