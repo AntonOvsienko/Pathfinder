@@ -22,13 +22,13 @@ public class Skelet extends Player{
         setClassPlayer("Скелет");
         setName(surname.get(random.nextInt(surname.size()-1)) + " скелет");
         setWeapon(action);
-        setInitiative(6);
-        setStrength(15);
-        setDexterity(14);
+        setInitiative(6+ random.nextInt(3)-1);
+        setStrength(15+ random.nextInt(3)-1);
+        setDexterity(14+ random.nextInt(3)-1);
         setCostitution(0);
-        setCharisma(12);
+        setCharisma(12+ random.nextInt(3)-1);
         setIntellegence(0);
-        setWisdom(10);
+        setWisdom(10+ random.nextInt(3)-1);
 
         setHealth(4);
         setHealthmax(getHealth());
@@ -64,18 +64,18 @@ public class Skelet extends Player{
         }else {
             x=0;
         }
-        int attacknominal=tableIDinteger[tableID][1]-tableIDinteger[tableID][0];
-        int attack=random.nextInt(20)+1;
-        if (attack==20) {
-            damage = random.nextInt(attacknominal)+1+tableIDinteger[tableID][0];
+        int attacknominal = tableIDinteger[tableID][1] - tableIDinteger[tableID][0];
+        int attack = random.nextInt(20) + 1;
+        if (attack == 20) {
+            damage = random.nextInt(attacknominal) + 1 + tableIDinteger[tableID][0];
             int attackdop = random.nextInt(20) + 1;
-            if (attackdop+getAttackmodificator(getBasicmodificatorattack()) > enemy.get(x).getDefense()) {
-                damage += random.nextInt(attacknominal)+1+tableIDinteger[tableID][0];
+            if (attackdop + getAttackmodificator(getBasicmodificatorattack()) > enemy.get(x).getDefense()) {
+                damage += random.nextInt(attacknominal) + 1 + tableIDinteger[tableID][0];
             }
             enemy.get(x).setHealth(enemy.get(x).getHealth() - damage);
-            results=(getName()+" наносит критический урон "+ enemy.get(x).getName().toLowerCase()+ " на " + damage);
-        } else if ((attack+getAttackmodificator(getBasicmodificatorattack()))>enemy.get(x).getDefense()){
-            damage+=random.nextInt(attacknominal)+1+tableIDinteger[tableID][0];
+            results=(getName() + " наносит критический урон " + enemy.get(x).getName().toLowerCase() + " на " + damage);
+        } else if ((attack + getAttackmodificator(getBasicmodificatorattack())) > enemy.get(x).getDefense()){
+            damage+=random.nextInt(attacknominal) + 1 + tableIDinteger[tableID][0];
             enemy.get(x).setHealth(enemy.get(x).getHealth()-damage);
             results=(getName() + " " + tableIDstring[tableID] + " на " + damage);
         } else {
@@ -84,7 +84,7 @@ public class Skelet extends Player{
         if (enemy.get(x).getHealth()<=0){
             enemy.get(x).setHealth(0);
             enemy.get(x).setLife(false);
-            results+=" и " +enemy.get(x).getName().toLowerCase()+  " был убит";
+            results+=" и " + enemy.get(x).getName().toLowerCase() +  " был убит";
         }
         return results;
     }

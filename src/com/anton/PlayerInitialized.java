@@ -1,6 +1,7 @@
 package com.anton;
 
 import com.anton.ClassPlayer.Warior;
+import com.anton.Routine.DataInput;
 
 import java.io.*;
 import java.util.*;
@@ -21,7 +22,7 @@ public class PlayerInitialized{
         if (classname.equalsIgnoreCase("Воин")){
             do {
                 System.out.println("Выбрать характеристики созданного персонажа (1) или из сохранённого (2)");
-                int start = DataInput.InputInteger();
+                int start = com.anton.Routine.DataInput.InputInteger();
                 if (start == 1) {
                     int[] character = PlayerInitialized.character();
                     Warior men = new Warior(name, "Воин", character[0], character[1], character[2], character[3], character[4],
@@ -58,7 +59,7 @@ public class PlayerInitialized{
                   "\n4.Интеллект-"+temp[3]+"\n5.Мудрость-"+temp[4]+"\n6.Харизма-"+temp[5]+
                   "\n7.Таблица изменения характеристик" + "\n8.Сохранить" + "\n9.Выход");
             end=true;
-            number=DataInput.InputInteger();
+            number= com.anton.Routine.DataInput.InputInteger();
             if (number==7){
                 tablCharacter();
                 continue;
@@ -77,7 +78,7 @@ public class PlayerInitialized{
               continue;
             }
             System.out.println("Введите новое значение");
-            number2=DataInput.InputInteger();
+            number2= DataInput.InputInteger();
            if (number2<7||number2>18){
              System.out.println("Неверное значение. Введённое число должно быть в диапазоне 7-18");
              continue;

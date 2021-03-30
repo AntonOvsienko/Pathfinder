@@ -1,6 +1,7 @@
 package com.anton.ClassPlayer;
 
-import com.anton.DataInput;
+import com.anton.Inventory.Inventory;
+import com.anton.Routine.DataInput;
 import com.anton.Player;
 import com.anton.PlayerInitialized;
 import com.anton.TextBattle.HitSuccess;
@@ -38,6 +39,14 @@ public class Warior extends Player {
         setExperience(getExptable().get(0));      //начальный опыт
         setExperiencemax(getExptable().get(1));   //опыт следующего уровня
         setInitiative(getDexterity());            //Инициатива;
+        setMoney(175000);
+        setPersonthings(new ArrayList<>());
+        setWeaponequepleft(new Inventory("Пусто",0,0,0,0,0,0));
+        setWeaponequepright(new Inventory("Пусто",0,0,0,0,0,0));
+        setArmorequep(new Inventory("Пусто",0,0,0,0,0,0));
+        setTypearmor(new ArrayList<>(Arrays.asList("Лёгкий","Щит")));
+        setTypeweapon(new ArrayList<>(Arrays.asList("Одноручное")));
+        setShield(true);
     }
 
     public static Warior initialized(String name) throws IOException, ClassNotFoundException {
@@ -79,7 +88,7 @@ public class Warior extends Player {
         System.out.println("Выберите действие в бою");
         System.out.println("1.Полная атака");
         System.out.println("2.Осторожная атака");
-        System.out.println("3.Глухая оборона+отхил(15%) без атаки");
+        System.out.println("3.Глухая оборона+отхил(20%) без атаки");
         int choice=DataInput.InputInteger();
         if (choice==1){
             Visual.BattleVisual(all);
@@ -91,7 +100,7 @@ public class Warior extends Player {
             break;
             }else if (choice == 3){
                 setDefenceonround(6);
-                setHealth(getHealth()+(int)Math.round((double)getHealthmax()*15/100));
+                setHealth(getHealth()+(int)Math.round((double)getHealthmax()*20/100));
                     if (getHealth()>getHealthmax()){
                       setHealth(getHealthmax());
                 }
@@ -104,7 +113,7 @@ public class Warior extends Player {
             int atmodificator=getTablemodificatorattack()[getLvl()-1][z];
         if (enemy.size()>1){
             do {
-                System.out.println(getName()+ " " +getHealth()+"/"+getHealthmax()+" выберите противника:");
+                System.out.println(getName() + " " +getHealth() + "/" + getHealthmax() + " выберите противника:");
                 for (int i=0;i<enemy.size();i++){
                     System.out.println((i + 1) + "." + enemy.get(i).getName() + "-" + enemy.get(i).getHealth() + "/" + enemy.get(i).getHealthmax());
                 }
@@ -161,6 +170,5 @@ public class Warior extends Player {
         charactresLvlUp(1);
         }
     }
-
 
 }

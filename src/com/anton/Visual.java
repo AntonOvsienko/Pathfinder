@@ -1,7 +1,11 @@
 package com.anton;
 
+import com.anton.Inventory.Armor;
+import com.anton.Inventory.Weapon;
+
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
 
 public class Visual {
@@ -13,10 +17,6 @@ public class Visual {
         System.out.println("-------------------------------------------");
     }
 
-    public static void health1vs1(Player player1,Player player2){
-        System.out.printf("%-10s        |     %-10s\n",player1.getName(),player2.getName());
-        System.out.printf("Здоровье:%2d/%-2d    |     Здоровье:%2d/%-2d\n",player1.getHealth(),player1.getHealthmax(),player2.getHealth(),player2.getHealthmax());
-    }
     public static void BattleVisual (List<Player> player){
 
         Collections.sort(player,IDComparator);
@@ -114,6 +114,38 @@ public class Visual {
             }
         }
         System.out.println();
+    }
+
+    public static void ShopWeaponVisual(HashMap<String,Weapon> weapon){
+        System.out.println("Купить оружие под номером:");
+        System.out.println(" №|Наименование     | Вес |  Цена  | Максимальный дмг");
+        System.out.println("=====================================================");
+        for (HashMap.Entry<String, Weapon> entry : weapon.entrySet()) {
+            System.out.printf("%2s|%-17s| %-4.1f| %-7d|%2d(крит-%2d)",
+                    entry.getKey(),
+                    entry.getValue().getName(),
+                    entry.getValue().getWeight(),
+                    entry.getValue().getCost(),
+                    entry.getValue().getDamage(),
+                    entry.getValue().getCrit());
+            System.out.println();
+        }
+    }
+
+    public static void ShopArmorVisual(HashMap<String, Armor> armor){
+        System.out.println("Купить броню>:");
+        System.out.println(" №|Наименование        | Вес  |  Цена  | Тип доспехов | Бонус к защите");
+        System.out.println("======================================================================");
+        for (HashMap.Entry<String, Armor> entry : armor.entrySet()) {
+            System.out.printf("%2s|%-20s| %-5.1f| %-7d| %-13s| %-10d",
+                    entry.getKey(),
+                    entry.getValue().getName(),
+                    entry.getValue().getWeight(),
+                    entry.getValue().getCost(),
+                    entry.getValue().getType(),
+                    entry.getValue().getBonusdefencearmor());
+            System.out.println();
+        }
     }
 
     public static Comparator<Player> IDComparator = new Comparator<Player>() {

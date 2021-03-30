@@ -1,6 +1,7 @@
 package com.anton;
 
 import com.anton.Inventory.Inventory;
+import com.anton.Inventory.Weapon;
 
 import java.io.FileNotFoundException;
 import java.util.*;
@@ -28,7 +29,7 @@ public class Player{
     private int weapondamage;            //максимальный урон оружием
     private int attackmodificator;       //модификатор урон
     private int basicmodificatorattack;  //базовый модификатор атаки
-    private int[][] tablemodificatorattack;  //Базвый модификатор в зависимости отуровня
+    private int[][] tablemodificatorattack;  //Базовый модификатор в зависимости от уровня
     private int defense;                 //параметр защиты
     private boolean IDplayer;                 //состояние игрок(true)-враг(false)
     private HashMap<String, Integer[]> weapon;  //виды действий атаки
@@ -36,10 +37,14 @@ public class Player{
     private int experiencemax;           //максимальный опыт на текущем уровне
     private int lvl;                     //текущий лвл игрока
     private ArrayList<Integer> exptable;   //таблица получения опыта
-    private Inventory weaponequep;         //экипированное оружие
+    private Inventory weaponequepleft;         //экипированное оружие ведущая рука
+    private Inventory weaponequepright;         //экипированное оружие вспомогательная рука
     private Inventory armorequep;          //экипированная броня
-    private Inventory shieldequep;        //экипированный щит
+    private int money;                    //стартовые деньги
     private ArrayList<Inventory> personthings; //личные вещи
+    private ArrayList<String> typearmor; //тип носимой брони
+    private ArrayList<String> typeweapon; //тип носимого оружия
+    private boolean shield;                 //носит ли щит
 
     private int KO;                      //Коэффициент опасности
     private int initiative;              //Инициатива противника
@@ -344,30 +349,71 @@ public class Player{
         this.personthings = personthings;
     }
 
-    @Override
-    public String toString() {
-        return "Player{" +
-                "name='" + name + '\'' +
-                ", classPlayer='" + classPlayer + '\'' +
-                ", strength=" + strength +
-                ", dexterity=" + dexterity +
-                ", costitution=" + costitution +
-                ", intellegence=" + intellegence +
-                ", wisdom=" + wisdom +
-                ", charisma=" + charisma +
-                ", health=" + health +
-                '}';
-
+    public int getMoney() {
+        return money;
     }
-    public void charactresLvlUp(int x){
-        Scanner scanner=new Scanner(System.in);
+
+    public void setMoney(int money) {
+        this.money = money;
+    }
+
+    public Inventory getArmorequep() {
+        return armorequep;
+    }
+
+    public void setArmorequep(Inventory armorequep) {
+        this.armorequep = armorequep;
+    }
+
+    public Inventory getWeaponequepleft() {
+        return weaponequepleft;
+    }
+
+    public void setWeaponequepleft(Inventory weaponequepleft) {
+        this.weaponequepleft = weaponequepleft;
+    }
+
+    public Inventory getWeaponequepright() {
+        return weaponequepright;
+    }
+
+    public void setWeaponequepright(Inventory weaponequepright) {
+        this.weaponequepright = weaponequepright;
+    }
+
+    public ArrayList<String> getTypearmor() {
+        return typearmor;
+    }
+
+    public void setTypearmor(ArrayList<String> typearmor) {
+        this.typearmor = typearmor;
+    }
+
+    public boolean isShield() {
+        return shield;
+    }
+
+    public void setShield(boolean shield) {
+        this.shield = shield;
+    }
+
+    public ArrayList<String> getTypeweapon() {
+        return typeweapon;
+    }
+
+    public void setTypeweapon(ArrayList<String> typeweapon) {
+        this.typeweapon = typeweapon;
+    }
+
+    public void charactresLvlUp(int x) {
+        Scanner scanner = new Scanner(System.in);
         System.out.printf("1.Сила:          %-2d\n" +
-                "2.Ловкость:      %-2d\n" +
-                "3.Выносливость:  %-2d\n" +
-                "4.Интеллект:     %-2d\n" +
-                "5.Мудрость:      %-2d\n" +
-                "6.Харизма:       %-2d\n",strength,dexterity,costitution,intellegence,
-                wisdom,charisma);
-        int y=scanner.nextInt();
+                        "2.Ловкость:      %-2d\n" +
+                        "3.Выносливость:  %-2d\n" +
+                        "4.Интеллект:     %-2d\n" +
+                        "5.Мудрость:      %-2d\n" +
+                        "6.Харизма:       %-2d\n", strength, dexterity, costitution, intellegence,
+                wisdom, charisma);
+        int y = scanner.nextInt();
     }
 }
