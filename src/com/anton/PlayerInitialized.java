@@ -6,103 +6,103 @@ import com.anton.Routine.DataInput;
 import java.io.*;
 import java.util.*;
 
-public class PlayerInitialized{
-    static Scanner scanner=new Scanner(System.in);
-    static int bonuspoint=15;
-    static int number=0;
-    static int[] temp=new int[]{10,10,10,10,10,10};
+public class PlayerInitialized {
+    static Scanner scanner = new Scanner(System.in);
+    static int bonuspoint = 15;
+    static int number = 0;
+    static int[] temp = new int[]{10, 10, 10, 10, 10, 10};
 
-    public static <E extends Player>E Initial() throws IOException, ClassNotFoundException {
-        Scanner scanner=new Scanner(System.in);
+    public static <E extends Player> E Initial() throws IOException, ClassNotFoundException {
+        Scanner scanner = new Scanner(System.in);
         System.out.println("Введите имя персонажа");
-        String name=scanner.nextLine();
+        String name = scanner.nextLine();
         System.out.println("Выберите класс персонажа из списка: Воин");
-        do{
-        String classname=scanner.nextLine();
-        if (classname.equalsIgnoreCase("Воин")){
-            do {
-                System.out.println("Выбрать характеристики созданного персонажа (1) или из сохранённого (2)");
-                int start = com.anton.Routine.DataInput.InputInteger();
-                if (start == 1) {
-                    int[] character = PlayerInitialized.character();
-                    Warior men = new Warior(name, "Воин", character[0], character[1], character[2], character[3], character[4],
-                            character[5]);
-                    return (E) men;
-                } else if (start == 2) {
-                    ObjectInputStream ois = new ObjectInputStream(new FileInputStream("PersonCharact.bin"));
-                    int[] character2 = (int[]) ois.readObject();
-                    Warior men = new Warior(name, "Воин", character2[0], character2[1], character2[2], character2[3], character2[4],
-                            character2[5]);
-                    ois.close();
-                    return (E) men;
-                } else {
-                    System.out.println("Неверное значение введите ещё раз");
-                }
-            }while(true);
-            }else{
+        do {
+            String classname = scanner.nextLine();
+            if (classname.equalsIgnoreCase("Воин")) {
+                do {
+                    System.out.println("Выбрать характеристики созданного персонажа (1) или из сохранённого (2)");
+                    int start = com.anton.Routine.DataInput.InputInteger();
+                    if (start == 1) {
+                        int[] character = PlayerInitialized.character();
+                        Warior men = new Warior(name, "Воин", character[0], character[1], character[2], character[3], character[4],
+                                character[5]);
+                        return (E) men;
+                    } else if (start == 2) {
+                        ObjectInputStream ois = new ObjectInputStream(new FileInputStream("PersonCharact.bin"));
+                        int[] character2 = (int[]) ois.readObject();
+                        Warior men = new Warior(name, "Воин", character2[0], character2[1], character2[2], character2[3], character2[4],
+                                character2[5]);
+                        ois.close();
+                        return (E) men;
+                    } else {
+                        System.out.println("Неверное значение введите ещё раз");
+                    }
+                } while (true);
+            } else {
                 System.out.println("Неверный класс");
             }
-        }while (true);
+        } while (true);
     }
 
-    public static int[] character() throws IOException{
+    public static int[] character() throws IOException {
         boolean end;
         System.out.println("У вас есть лишних " + bonuspoint + " очков, по умолчанию все характеристики равны " +
                 "10 вы вольны изменить их согласно таблице, но не меньше 7 и не больше 18");
         tablCharacter();
         //tempVizual(temp);
         start:
-        do{
-            int number2=0;
-            System.out.println("Выберите характеристику для изменения:" +"\nБонусных очков для изменения:"+ bonuspoint +
-                  "\n1.Сила-"+temp[0]+"\n2.Ловкость-"+temp[1]+"\n3.Выносливость-"+temp[2]+
-                  "\n4.Интеллект-"+temp[3]+"\n5.Мудрость-"+temp[4]+"\n6.Харизма-"+temp[5]+
-                  "\n7.Таблица изменения характеристик" + "\n8.Сохранить" + "\n9.Выход");
-            end=true;
-            number= com.anton.Routine.DataInput.InputInteger();
-            if (number==7){
+        do {
+            int number2 = 0;
+            System.out.println("Выберите характеристику для изменения:" + "\nБонусных очков для изменения:" + bonuspoint +
+                    "\n1.Сила-" + temp[0] + "\n2.Ловкость-" + temp[1] + "\n3.Выносливость-" + temp[2] +
+                    "\n4.Интеллект-" + temp[3] + "\n5.Мудрость-" + temp[4] + "\n6.Харизма-" + temp[5] +
+                    "\n7.Таблица изменения характеристик" + "\n8.Сохранить" + "\n9.Выход");
+            end = true;
+            number = com.anton.Routine.DataInput.InputInteger();
+            if (number == 7) {
                 tablCharacter();
                 continue;
             }
-            if (number==8){
-                ObjectOutputStream oos=new ObjectOutputStream(new FileOutputStream("PersonCharact.bin"));
+            if (number == 8) {
+                ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("PersonCharact.bin"));
                 oos.writeObject(temp);
                 oos.close();
                 continue;
             }
-            if (number==9){
+            if (number == 9) {
                 break;
             }
-            if ((number<1)||(number>8)) {
-              System.out.println("Число не в диапазоне 1-8");
-              continue;
+            if ((number < 1) || (number > 8)) {
+                System.out.println("Число не в диапазоне 1-8");
+                continue;
             }
             System.out.println("Введите новое значение");
-            number2= DataInput.InputInteger();
-           if (number2<7||number2>18){
-             System.out.println("Неверное значение. Введённое число должно быть в диапазоне 7-18");
-             continue;
-          }
+            number2 = DataInput.InputInteger();
+            if (number2 < 7 || number2 > 18) {
+                System.out.println("Неверное значение. Введённое число должно быть в диапазоне 7-18");
+                continue;
+            }
 
-          changeCharacter(number,number2,temp);
+            changeCharacter(number, number2, temp);
 
-        }while(end);
+        } while (end);
 
-       return temp;
+        return temp;
     }
 
 
-    private static void tempVizual(int[] temp){
+    private static void tempVizual(int[] temp) {
         System.out.printf("1.Сила:          %-2d\n" +
-                         "2.Ловкость:      %-2d\n" +
-                         "3.Выносливость:  %-2d\n" +
-                         "4.Интеллект:     %-2d\n" +
-                         "5.Мудрость:      %-2d\n" +
-                         "6.Харизма:       %-2d\n",temp[0],temp[1],temp[2],temp[3],temp[4],temp[5]);
+                "2.Ловкость:      %-2d\n" +
+                "3.Выносливость:  %-2d\n" +
+                "4.Интеллект:     %-2d\n" +
+                "5.Мудрость:      %-2d\n" +
+                "6.Харизма:       %-2d\n", temp[0], temp[1], temp[2], temp[3], temp[4], temp[5]);
     }
 
 
-    private static void tablCharacter(){
+    private static void tablCharacter() {
         System.out.println("   Значение     |    Стоимость   ||   Значение     |    Стоимость   ");
         System.out.println("--------------------------------------------------------------------");
         System.out.println("       7        |        -4      ||       13       |         3      ");
@@ -114,33 +114,33 @@ public class PlayerInitialized{
     }
 
 
-    private static void changeCharacter(int number1,int number2,int[] temp){
-        int tempchange=0;
-        Map<Integer,Integer> keyValue=new HashMap<>();
-        keyValue.put(7,-4);
-        keyValue.put(8,-2);
-        keyValue.put(9,-1);
-        keyValue.put(10,0);
-        keyValue.put(11,1);
-        keyValue.put(12,2);
-        keyValue.put(13,3);
-        keyValue.put(14,5);
-        keyValue.put(15,7);
-        keyValue.put(16,10);
-        keyValue.put(17,13);
-        keyValue.put(18,17);
-        tempchange=keyValue.get(temp[number1-1]) - keyValue.get(number2);
-        if (Math.abs(tempchange)>bonuspoint){
+    private static void changeCharacter(int number1, int number2, int[] temp) {
+        int tempchange = 0;
+        Map<Integer, Integer> keyValue = new HashMap<>();
+        keyValue.put(7, -4);
+        keyValue.put(8, -2);
+        keyValue.put(9, -1);
+        keyValue.put(10, 0);
+        keyValue.put(11, 1);
+        keyValue.put(12, 2);
+        keyValue.put(13, 3);
+        keyValue.put(14, 5);
+        keyValue.put(15, 7);
+        keyValue.put(16, 10);
+        keyValue.put(17, 13);
+        keyValue.put(18, 17);
+        tempchange = keyValue.get(temp[number1 - 1]) - keyValue.get(number2);
+        if (Math.abs(tempchange) > bonuspoint) {
             System.out.println("Число выходит за пределы границ попробуйте снова");
-        }else{
-            bonuspoint+=tempchange;
-            temp[number1-1]=number2;
+        } else {
+            bonuspoint += tempchange;
+            temp[number1 - 1] = number2;
         }
     }
-    private static Player createdCharacters(){
+
+    private static Player createdCharacters() {
         return null;
     }
-
 
 
 }

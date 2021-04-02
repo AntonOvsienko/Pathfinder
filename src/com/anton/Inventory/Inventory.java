@@ -13,40 +13,20 @@ public class Inventory {
     private int dexteryboundarylimit;
     private int finestrengthdextery;
 
-    public Inventory(){
+    public Inventory() {
 
     }
 
-    public Inventory(String name,int cost, double weight,int damage,String type,
-                     int crit, int amount){
-        this.name=name;
-        this.cost=cost;
-        this.weight=weight;
-        this.damage=damage;
-        this.type=type;
-        this.crit=crit;
-        this.amount=amount;
-    }
-
-    public Inventory(String name, int cost, double weight, String type, int amount,
-                     int bonusdefencearmor, int dexteryboundarylimit, int finestrengthdextery){
-        this.name=name;
-        this.cost=cost;
-        this.weight=weight;
-        this.type=type;
-        this.amount=amount;
-        this.bonusdefencearmor=bonusdefencearmor;
-        this.dexteryboundarylimit = dexteryboundarylimit;
-        this.finestrengthdextery = finestrengthdextery;
-    }
-
-    public Inventory(String name,double weight,int damage,     //ПУСТО при создании персонажа
-                     int crit,int bonusdefencearmor, int dexteryboundarylimit, int finestrengthdextery){
-        this.name=name;
-        this.weight=weight;
-        this.damage=damage;
-        this.crit=crit;
-        this.bonusdefencearmor=bonusdefencearmor;
+    public Inventory(String name, int cost, double weight, String type,int amount, int damage,
+                     int crit,int bonusdefencearmor, int dexteryboundarylimit, int finestrengthdextery) {
+        this.name = name;
+        this.cost = cost;
+        this.weight = weight;
+        this.damage = damage;
+        this.type = type;
+        this.crit = crit;
+        this.amount = amount;
+        this.bonusdefencearmor = bonusdefencearmor;
         this.dexteryboundarylimit = dexteryboundarylimit;
         this.finestrengthdextery = finestrengthdextery;
     }
@@ -131,4 +111,6 @@ public class Inventory {
     public void setFinestrengthdextery(int finestrengthdextery) {
         this.finestrengthdextery = finestrengthdextery;
     }
+
+
 }

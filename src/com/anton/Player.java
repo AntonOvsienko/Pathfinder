@@ -6,14 +6,14 @@ import com.anton.Inventory.Weapon;
 import java.io.FileNotFoundException;
 import java.util.*;
 
-public class Player{
+public class Player {
 
     private boolean life;
     private String name;
     private String classPlayer;          //Класс игрока
     private int strength;                //Сила
     private int strengthModify;          //Модификтор силы
-    private int dexterity ;              //Ловкость
+    private int dexterity;              //Ловкость
     private int dexterityModify;         //Модификатор ловкости
     private int costitution;             //Вынословисть
     private int contitutionModify;       //Модификатор выносливости
@@ -35,7 +35,7 @@ public class Player{
     private HashMap<String, Integer[]> weapon;  //виды действий атаки
     private int experience;              //текущий опыт (персонажа и противника который можно получить после его убийства)
     private int experiencemax;           //максимальный опыт на текущем уровне
-    private int lvl;                     //текущий лвл игрока
+    private static int lvl;                     //текущий лвл игрока или партии
     private ArrayList<Integer> exptable;   //таблица получения опыта
     private Inventory weaponequepleft;         //экипированное оружие ведущая рука
     private Inventory weaponequepright;         //экипированное оружие вспомогательная рука
@@ -52,22 +52,21 @@ public class Player{
     private int defenceonround;          //доп защита на раунд
     private int atackonround;            //доп атака на раунд
 
-    public Player (int KO){
-        this.KO=KO;
+    public Player(){
     }
 
-    public Player(String name,String classPlayer,int strength,int dexterity,int costitution,int intellegence,
-                  int wisdom,int charisma) {
-        this.name=name;
-        this.classPlayer=classPlayer;
-        this.strength=strength;
-        this.dexterity=dexterity;
-        this.costitution=costitution;
-        this.intellegence=intellegence;
-        this.wisdom=wisdom;
-        this.charisma=charisma;
+    public Player(String name, String classPlayer, int strength, int dexterity, int costitution, int intellegence,
+                  int wisdom, int charisma) {
+        this.name = name;
+        this.classPlayer = classPlayer;
+        this.strength = strength;
+        this.dexterity = dexterity;
+        this.costitution = costitution;
+        this.intellegence = intellegence;
+        this.wisdom = wisdom;
+        this.charisma = charisma;
     }
-    
+
     public String getName() {
         return name;
     }
@@ -85,9 +84,9 @@ public class Player{
     }
 
     public int getStrengthModify() {
-        if (strength>6){                                //Модификаторы
-            return (strength-10)/2;
-        } else{
+        if (strength > 6) {                                //Модификаторы
+            return (strength - 10) / 2;
+        } else {
             return 0;
         }
     }
@@ -102,9 +101,9 @@ public class Player{
     }
 
     public int getDexterityModify() {
-        if (dexterity>6){
-            return (dexterity-10)/2;
-        } else{
+        if (dexterity > 6) {
+            return (dexterity - 10) / 2;
+        } else {
             return 0;
         }
     }
@@ -118,10 +117,9 @@ public class Player{
     }
 
     public int getContitutionModify() {
-        if (costitution>6){
-            return (costitution-10)/2;
-        }
-        else{
+        if (costitution > 6) {
+            return (costitution - 10) / 2;
+        } else {
             return 0;
         }
     }
@@ -135,10 +133,9 @@ public class Player{
     }
 
     public int getIntellegenceModify() {
-        if (intellegence>6){
-            return (intellegence-10)/2;
-        }
-        else{
+        if (intellegence > 6) {
+            return (intellegence - 10) / 2;
+        } else {
             return 0;
         }
     }
@@ -152,10 +149,9 @@ public class Player{
     }
 
     public int getWisdomModify() {
-        if (wisdom>6){
-            return  (wisdom-10)/2;
-        }
-        else{
+        if (wisdom > 6) {
+            return (wisdom - 10) / 2;
+        } else {
             return 0;
         }
     }
@@ -169,10 +165,9 @@ public class Player{
     }
 
     public int getCharismaModify() {
-        if (charisma>6){
-            return (charisma-10)/2;
-        }
-        else{
+        if (charisma > 6) {
+            return (charisma - 10) / 2;
+        } else {
             return 0;
         }
     }
@@ -194,7 +189,7 @@ public class Player{
     }
 
     public int getAttackmodificator(int atmodificator) {
-        return getStrengthModify()+atmodificator+getAtackonround();
+        return getStrengthModify() + atmodificator + getAtackonround();
     }
 
     public void setAttackmodificator(int attackmodificator) {
@@ -202,7 +197,8 @@ public class Player{
     }
 
     public int getDefense() {
-        return 10+getDexterityModify()+getDefenceonround();
+        return 10 + getDexterityModify() + getDefenceonround() + weaponequepleft.getBonusdefencearmor()+
+                weaponequepright.getBonusdefencearmor() + armorequep.getBonusdefencearmor();
     }
 
     public void setDefense(int defense) {
@@ -405,6 +401,7 @@ public class Player{
         this.typeweapon = typeweapon;
     }
 
+
     public void charactresLvlUp(int x) {
         Scanner scanner = new Scanner(System.in);
         System.out.printf("1.Сила:          %-2d\n" +
@@ -415,5 +412,14 @@ public class Player{
                         "6.Харизма:       %-2d\n", strength, dexterity, costitution, intellegence,
                 wisdom, charisma);
         int y = scanner.nextInt();
+    }
+
+    @Override
+    public String toString() {
+        return "";
+    }
+
+    public void Heals(){
+
     }
 }

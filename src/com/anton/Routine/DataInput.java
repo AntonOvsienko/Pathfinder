@@ -1,6 +1,7 @@
 package com.anton.Routine;
 
 import com.anton.ClassPlayer.Warior;
+
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
 import java.util.Scanner;
@@ -24,12 +25,12 @@ public class DataInput {
         while (true) {
             try {
                 String xtemp = scanner.nextLine();
-                int x=Integer.parseInt(xtemp);
-                if (x>size){
+                int x = Integer.parseInt(xtemp);
+                if (x > size) {
                     System.out.println("Число вне диапазона");
                     continue;
-                }else {
-                return x;
+                } else {
+                    return x;
                 }
             } catch (NumberFormatException e) {
                 System.out.println("Вы ввели не число");
