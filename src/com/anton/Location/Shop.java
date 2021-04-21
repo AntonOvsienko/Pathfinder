@@ -64,6 +64,7 @@ public class Shop extends Inventory {
 
     public static void Sale(Player player){
         int pointer=0;
+
         Visual.MyInventar(player);
         while(true){
             System.out.println("Выберите действие:");

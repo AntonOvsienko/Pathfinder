@@ -2,48 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="592ca8e5-2146-429b-b0ee-3eb07d5919b3" name="Default Changelist" comment="Экипировка">
-      <change afterPath="$PROJECT_DIR$/src/com/anton/Adventure/CreatingAdventure.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/anton/Adventure/EnemyList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/anton/Adventure/OnwardAdventure.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/anton/Adventure/PreparationForHike.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Default_Changelist]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Default_Changelist]1/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Default_Changelist_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Default_Changelist_1.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Pathfinder/com/anton/Adventure/PreparationForHike.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Pathfinder/com/anton/Adventure/PreparationForHike.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Pathfinder/com/anton/ClassEnemy/Skelet.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Pathfinder/com/anton/ClassEnemy/Skelet.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Pathfinder/com/anton/ClassPlayer/Warior.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Pathfinder/com/anton/ClassPlayer/Warior.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Pathfinder/com/anton/EnemyInitialized.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Pathfinder/com/anton/Inventory/Armor$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Pathfinder/com/anton/Inventory/Armor$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Pathfinder/com/anton/Inventory/Armor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Pathfinder/com/anton/Inventory/Armor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Pathfinder/com/anton/Inventory/Inventory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Pathfinder/com/anton/Inventory/Inventory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Pathfinder/com/anton/Inventory/Weapon$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Pathfinder/com/anton/Inventory/Weapon$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Pathfinder/com/anton/Inventory/Weapon.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Pathfinder/com/anton/Inventory/Weapon.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Pathfinder/com/anton/Location/Shop.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Pathfinder/com/anton/Location/Shop.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Pathfinder/com/anton/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Pathfinder/com/anton/Player.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Pathfinder/com/anton/PlayerInitialized.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Pathfinder/com/anton/PlayerInitialized.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Pathfinder/com/anton/Routine/DataInput.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Pathfinder/com/anton/Routine/DataInput.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Pathfinder/com/anton/Routine/Equip.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Pathfinder/com/anton/Routine/Equip.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Pathfinder/com/anton/Start.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Pathfinder/com/anton/Start.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Pathfinder/com/anton/TextBattle/HitSuccess.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Pathfinder/com/anton/TextBattle/HitSuccess.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Pathfinder/com/anton/Visual$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Pathfinder/com/anton/Visual$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Pathfinder/com/anton/Visual.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Pathfinder/com/anton/Visual.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/anton/ClassEnemy/Skelet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/anton/ClassEnemy/Skelet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/anton/ClassPlayer/Warior.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/anton/ClassPlayer/Warior.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/anton/EnemyInitialized.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/anton/FightAlgorithm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/anton/FightAlgorithm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/anton/Inventory/Armor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/anton/Inventory/Armor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/anton/Inventory/Inventory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/anton/Inventory/Inventory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/anton/Inventory/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/anton/Inventory/Item.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/anton/Inventory/Weapon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/anton/Inventory/Weapon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/anton/Adventure/OnwardAdventure.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/anton/Adventure/PreparationForHike.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/anton/Adventure/PreparationForHike.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/anton/Location/Shop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/anton/Location/Shop.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/anton/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/anton/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/anton/PlayerInitialized.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/anton/PlayerInitialized.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/anton/Routine/DataInput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/anton/Routine/DataInput.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/anton/Routine/Equip.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/anton/Routine/Equip.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/anton/Start.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/anton/Start.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/anton/TextBattle/HitSuccess.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/anton/TextBattle/HitSuccess.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/anton/Visual.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/anton/Visual.java" afterDir="false" />
     </list>
     <list id="590c477a-adb6-4bfd-89a9-7e9be96c8c7f" name="Revert &quot;Add files via upload&quot;" comment="Revert &quot;Add files via upload&quot;&#10;&#10;This reverts commit 2bbbafe0" />
     <list id="062d64b3-cd86-49f3-b7db-b1062cd3b731" name="Revert &quot;Инициализация персонажа&quot;" comment="Revert &quot;Инициализация персонажа&quot;&#10;&#10;This reverts commit 5a0ee922" />
@@ -239,6 +204,13 @@
     <MESSAGE value="Revert &quot;Add files via upload&quot;&#10;&#10;This reverts commit 2bbbafe02b0b26d2c6c45a0e7db8bf17e1b36e69.&#10;&#10;# Conflicts:&#10;#&#9;src/com/anton/ClassEnemy/Skelet.java&#10;#&#9;src/com/anton/ClassPlayer/Warior.java&#10;#&#9;src/com/anton/Player.java&#10;#&#9;src/com/anton/PlayerInitialized.java&#10;#&#9;src/com/anton/Start.java" />
     <MESSAGE value="Экипировка" />
     <option name="LAST_COMMIT_MESSAGE" value="Экипировка" />
+  </component>
+  <component name="XDebuggerManager">
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="com.anton.Adventure.Output" memberName="listAdventure" />
+      </pinned-members>
+    </pin-to-top-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
