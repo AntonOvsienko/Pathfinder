@@ -4,6 +4,7 @@ import com.anton.FightAlgorithm;
 import com.anton.Inventory.Inventory;
 import com.anton.Location.Shop;
 import com.anton.Player;
+import com.anton.Routine.ChoosePlayer;
 import com.anton.Routine.DataInput;
 import com.anton.Routine.Equip;
 import com.anton.Visual;
@@ -17,8 +18,9 @@ public class PreparationForHike {
     Output output;
     Input input;
 
-    public static void Preparation(Player player) throws InterruptedException, FileNotFoundException {
+    public static void Preparation(List<Player> player) throws InterruptedException, FileNotFoundException {
         int pointer = 0;
+        int choice=0;
         LinkedList<String> listAdventure=new LinkedList<String>();
         Output output;
         Input input;
@@ -34,10 +36,14 @@ public class PreparationForHike {
             System.out.println("3.В путь");
             pointer = DataInput.InputInteger();
             if (pointer == 1){
-                Visual.MyInventar(player);
-                Equip.Equipment(player);
+                System.out.println("Какого персонажа хотите посмотреть?");
+                choice= ChoosePlayer.Choose(player);
+                Visual.MyInventar(player.get(choice));
+                Equip.Equipment(player.get(choice));
                 }else if (pointer == 2){
-                Shop.ShopChoice(player);
+                System.out.println("Какого персонаж, будет покупать");
+                choice= ChoosePlayer.Choose(player);
+                Shop.ShopChoice(player.get(choice));
                 }else if (pointer == 3){
                     break;
             }
@@ -51,7 +57,7 @@ public class PreparationForHike {
             pointer = DataInput.InputInteger();
             if (pointer == 1){
                 output=new Output(player,listAdventure,100);
-                input=new Input(player,listAdventure,100);
+                input=new Input(listAdventure,100);
                 thrd1 = new Thread(input);
                 thrd2 = new Thread(output);
 
@@ -63,6 +69,18 @@ public class PreparationForHike {
 
                 break;
             }else if (pointer == 2){
+                output=new Output(player,listAdventure,150);
+                input=new Input(listAdventure,150);
+                thrd1 = new Thread(input);
+                thrd2 = new Thread(output);
+
+                thrd1.start();
+                thrd2.start();
+
+                thrd1.join();
+                thrd2.join();
+
+                break;
             }else if (pointer == 3){
                 Preparation(player);
             }
@@ -71,17 +89,17 @@ public class PreparationForHike {
 }
 
 class Output implements Runnable {
-    Player player;
+    List<Player> player;
     LinkedList<String> listAdventure;
     int way;
 
-    Output(Player player, LinkedList<String> listAdventure, int way) {
+    Output(List<Player> player, LinkedList<String> listAdventure, int way) {
         this.player = player;
         this.listAdventure = listAdventure;
         this.way = way;
     }
 
-    public void Output() {
+    public void Output() throws FileNotFoundException {
         double dangerlabel = 0;
         Scanner scanner = new Scanner(System.in);
         String reflaction;
@@ -89,7 +107,6 @@ class Output implements Runnable {
         synchronized (listAdventure){
         for (int i = 0; i < way; i++) {
             while (listAdventure.size() == 0) {
-                System.out.println("Поток вывода остановлен");
                 try {
                     listAdventure.wait(100);
                 } catch (InterruptedException e) {
@@ -97,9 +114,8 @@ class Output implements Runnable {
                 }
             }
             reflaction = listAdventure.pollFirst();
-            System.out.println("Поток вывода включён");
             if (i % 10 == 0) {
-                player.Heals();
+
             }
             if (reflaction.equalsIgnoreCase("Положительное")) {
                 System.out.println((i + 1) + "/" + way);
@@ -108,7 +124,7 @@ class Output implements Runnable {
             } else if (reflaction.equalsIgnoreCase("Отрицательное")) {
                 System.out.println((i + 1) + "/" + way);
                 System.out.println("Отрицательное действо");
-                //FightAlgorithm.Fight(player,EnemyList.List(dangerlabel,player));
+                FightAlgorithm.Fight(player,EnemyList.List(dangerlabel,player));
                 dangerlabel *= 0.25;
 //                scanner.nextLine();
             } else if (reflaction.equalsIgnoreCase("Босс")) {
@@ -128,11 +144,14 @@ class Output implements Runnable {
 
     @Override
     public void run() {
-        Output();
+        try {
+            Output();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 }
 class Input implements Runnable{
-    Player player;
     LinkedList<String> listAdventure;
     int way;
     Random random=new Random();
@@ -144,8 +163,7 @@ class Input implements Runnable{
     double modifikator=0;
 
 
-    Input (Player player, LinkedList<String> listAdventure,int way){
-    this.player=player;
+    Input (LinkedList<String> listAdventure,int way){
     this.listAdventure=listAdventure;
     this.way=way;
 
@@ -155,14 +173,12 @@ class Input implements Runnable{
         synchronized (listAdventure) {
             for (int i = 0; i < way; i++) {
                 while (listAdventure.size() > 5) {
-                    System.out.println("Поток ввода отключён");
                     try {
                         listAdventure.wait(100);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
                 }
-                System.out.println("Поток ввода включён");
                 counter = random.nextInt(100) + 1;
                 if (i == 50) {
                     listAdventure.add("Отдых");

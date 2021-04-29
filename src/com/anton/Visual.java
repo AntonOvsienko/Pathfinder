@@ -187,4 +187,11 @@ public class Visual {
             }
         }
     };
+
+    public static void SequenceOfMoves(List<Player> list,int iterator){
+        for (Player x:list){
+            System.out.println(x.getName()+"-->");
+        }
+
+    }
 }

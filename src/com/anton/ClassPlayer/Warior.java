@@ -87,7 +87,7 @@ public class Warior extends Player {
         int x = 0;
         int choice=0;
         while (true) {
-            System.out.println("Выберите действие в бою");
+            System.out.println(getName()+"("+ getClassPlayer() +")"+" выберите действие в бою");
             System.out.println("1.Полная атака (атака одноручным оружием или двумя одноручными со штрафом в 50% при броске кубика для оружия в левой руке)");
             System.out.println("2.Осторожная атака(атака с одноручныv, +4 к защите, -4 к обороне при броске кубика)");
             System.out.println("3.Глухая оборона + отхил(20%) без атаки");

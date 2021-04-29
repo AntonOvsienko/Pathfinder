@@ -91,7 +91,6 @@ public class PlayerInitialized {
         return temp;
     }
 
-
     private static void tempVizual(int[] temp) {
         System.out.printf("1.Сила:          %-2d\n" +
                 "2.Ловкость:      %-2d\n" +
@@ -100,7 +99,6 @@ public class PlayerInitialized {
                 "5.Мудрость:      %-2d\n" +
                 "6.Харизма:       %-2d\n", temp[0], temp[1], temp[2], temp[3], temp[4], temp[5]);
     }
-
 
     private static void tablCharacter() {
         System.out.println("   Значение     |    Стоимость   ||   Значение     |    Стоимость   ");
@@ -112,7 +110,6 @@ public class PlayerInitialized {
         System.out.println("       11       |         1      ||       17       |        13      ");
         System.out.println("       12       |         2      ||       18       |        17      ");
     }
-
 
     private static void changeCharacter(int number1, int number2, int[] temp) {
         int tempchange = 0;
@@ -140,6 +137,20 @@ public class PlayerInitialized {
 
     private static Player createdCharacters() {
         return null;
+    }
+
+    public static void PartyInitial(List<Player> party) throws IOException, ClassNotFoundException {
+        int count;
+        System.out.println("Укажите размер отряда максимум 4 участника, при выборе 5 будет представлена заговленная пати на 4 участника");
+        count=DataInput.InputInteger(5);
+        if (count==5){
+            party.add(new Warior("Вася", "Воин",18,15,10,10,8,7));
+            party.add(new Warior("Ваня", "Воин",18,13,12,10,8,7));
+            party.add(new Warior("Лёша", "Воин",18,12,11,10,8,7));
+            party.add(new Warior("Сергей", "Воин",16,12,15,10,8,7));
+        }else for(int i=0;i<count;i++){
+            party.add(Initial());
+        }
     }
 
 

@@ -12,6 +12,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import static com.anton.Inventory.Armor.*;
 import static com.anton.Inventory.Weapon.*;
@@ -20,17 +22,14 @@ import static com.anton.Inventory.Weapon.*;
 public class Start {
 
     public static void main(String[] args) throws InterruptedException, IOException, ClassNotFoundException {
-       Player men=PlayerInitialized.Initial();
-//        List<Player> enemy = new ArrayList<>();
-//        enemy.add(new Skelet(1));
-//        enemy.add(new Skelet(1));
-//        enemy.add(new Skelet(1));
-//        FightAlgorithm.Fight(men,enemy);
-          PreparationForHike.Preparation(men);
-
-
+//      Player men=PlayerInitialized.Initial();
+        List<Player> men = new ArrayList<>();
+        PlayerInitialized.PartyInitial(men);
+//      enemy.add(new Skelet(1));
+//      enemy.add(new Skelet(1));
+//      enemy.add(new Skelet(1));
+//      FightAlgorithm.Fight(men,enemy);
+        PreparationForHike.Preparation(men);
 
     }
-
-
 }

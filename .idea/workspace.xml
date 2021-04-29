@@ -1,14 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="592ca8e5-2146-429b-b0ee-3eb07d5919b3" name="Default Changelist" comment="Экипировка">
+    <list default="true" id="592ca8e5-2146-429b-b0ee-3eb07d5919b3" name="Default Changelist" comment="Многопоточность">
+      <change afterPath="$PROJECT_DIR$/src/com/anton/Routine/ChoosePlayer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Pathfinder/com/anton/Adventure/EnemyList.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Pathfinder/com/anton/Adventure/EnemyList.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Pathfinder/com/anton/Adventure/Input.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Pathfinder/com/anton/Adventure/Input.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Pathfinder/com/anton/Adventure/OnwardAdventure.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Pathfinder/com/anton/Adventure/Output.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Pathfinder/com/anton/Adventure/Output.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Pathfinder/com/anton/Adventure/PreparationForHike.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Pathfinder/com/anton/Adventure/PreparationForHike.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Pathfinder/com/anton/ClassEnemy/Skelet.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Pathfinder/com/anton/ClassEnemy/Skelet.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Pathfinder/com/anton/ClassPlayer/Warior.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Pathfinder/com/anton/ClassPlayer/Warior.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/anton/Adventure/OnwardAdventure.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Pathfinder/com/anton/FightAlgorithm$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Pathfinder/com/anton/FightAlgorithm.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Pathfinder/com/anton/FightAlgorithm.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Pathfinder/com/anton/Location/Shop.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Pathfinder/com/anton/Location/Shop.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Pathfinder/com/anton/PlayerInitialized.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Pathfinder/com/anton/PlayerInitialized.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Pathfinder/com/anton/Start.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Pathfinder/com/anton/Start.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/anton/Adventure/EnemyList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/anton/Adventure/EnemyList.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/anton/Adventure/PreparationForHike.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/anton/Adventure/PreparationForHike.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/anton/Location/Shop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/anton/Location/Shop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/anton/ClassEnemy/Skelet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/anton/ClassEnemy/Skelet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/anton/ClassPlayer/Warior.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/anton/ClassPlayer/Warior.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/anton/FightAlgorithm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/anton/FightAlgorithm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/anton/PlayerInitialized.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/anton/PlayerInitialized.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/anton/Start.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/anton/Start.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/anton/Visual.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/anton/Visual.java" afterDir="false" />
     </list>
     <list id="590c477a-adb6-4bfd-89a9-7e9be96c8c7f" name="Revert &quot;Add files via upload&quot;" comment="Revert &quot;Add files via upload&quot;&#10;&#10;This reverts commit 2bbbafe0" />
     <list id="062d64b3-cd86-49f3-b7db-b1062cd3b731" name="Revert &quot;Инициализация персонажа&quot;" comment="Revert &quot;Инициализация персонажа&quot;&#10;&#10;This reverts commit 5a0ee922" />
@@ -145,7 +160,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617111632591</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Многопоточность">
+      <created>1619010610002</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1619010610002</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -203,7 +225,8 @@
     <MESSAGE value="Revert &quot;Add files via upload&quot;&#10;&#10;This reverts commit 2bbbafe0" />
     <MESSAGE value="Revert &quot;Add files via upload&quot;&#10;&#10;This reverts commit 2bbbafe02b0b26d2c6c45a0e7db8bf17e1b36e69.&#10;&#10;# Conflicts:&#10;#&#9;src/com/anton/ClassEnemy/Skelet.java&#10;#&#9;src/com/anton/ClassPlayer/Warior.java&#10;#&#9;src/com/anton/Player.java&#10;#&#9;src/com/anton/PlayerInitialized.java&#10;#&#9;src/com/anton/Start.java" />
     <MESSAGE value="Экипировка" />
-    <option name="LAST_COMMIT_MESSAGE" value="Экипировка" />
+    <MESSAGE value="Многопоточность" />
+    <option name="LAST_COMMIT_MESSAGE" value="Многопоточность" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>

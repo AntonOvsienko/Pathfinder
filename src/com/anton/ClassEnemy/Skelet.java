@@ -16,15 +16,10 @@ public class Skelet extends Player {
 
     public Skelet() {
 
-        HashMap<String, Integer[]> action = new HashMap<>();
-        action.put(getWeaponequepright().getName(), new Integer[]{0, getWeaponequepright().getDamage(),getWeaponequepright().getCrit()});
-        action.put("удар когтями", new Integer[]{1, 5,20});
-        action.put("двойной удар когтями", new Integer[]{2, 6,20});
         List<String> surname = Arrays.asList("Cтарый", "Ржавый", "Фиолетовый", "Зелёный", "Трухлявый");
 
         setClassPlayer("Скелет");
         setName(surname.get(random.nextInt(surname.size() - 1)) + " скелет");
-        setWeapon(action);
         setInitiative(6 + random.nextInt(3) - 1);
         setStrength(15 + random.nextInt(3) - 1);
         setDexterity(14 + random.nextInt(3) - 1);
@@ -45,6 +40,12 @@ public class Skelet extends Player {
                 0,0,0));
         setWeaponequepright(new Weapon("Сломанный скирт",0,0,"одноручное",0,6,20,0,0,0));
         setArmorequep(new Armor("Пусто",0,0,"0",0,0,0,0,0,0));
+
+        HashMap<String, Integer[]> action = new HashMap<>();
+        action.put(getWeaponequepright().getName(), new Integer[]{0, getWeaponequepright().getDamage(),getWeaponequepright().getCrit()});
+        action.put("удар когтями", new Integer[]{1, 5,20});
+        action.put("двойной удар когтями", new Integer[]{2, 6,20});
+        setWeapon(action);
     }
 
     public String Hit(List<Player> enemy, List<Player> all) throws FileNotFoundException {
@@ -60,6 +61,7 @@ public class Skelet extends Player {
         if (!enemy.get(0).isLife()) {
             return "";
         }
+
         for (Map.Entry<String, Integer[]> x : getWeapon().entrySet()) {
             tableIDstring[i] = x.getKey();
             tableIDinteger[i] = x.getValue();

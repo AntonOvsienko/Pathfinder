@@ -9,18 +9,26 @@ import java.util.List;
 import java.util.Random;
 
 public class EnemyList {
-    public static List<Player> List(double danger,Player player){
+    public static List<Player> List(double danger,List<Player> player){
         Random random=new Random();
-        int KO= (int) (player.getLvl()+danger*0.1);
+        int playerlvl=0;
+
+        for(Player x:player){
+            playerlvl+=x.getLvl();
+        }
+
+        playerlvl/=(int)player.size();
+
+        int KO= (int) (playerlvl+danger*0.1);
         List<Player> enemy=new ArrayList<>();
         List<Player> enemylvl1=new ArrayList<Player>(Arrays.asList(new Skelet()));
         while (true){
-            if (player.getLvl()==1){
+            if (playerlvl==1){
                 while (true){
                     int i= random.nextInt(enemylvl1.size())+1;
                     if (KO==0){
                         return enemy;
-                    } else if (i>KO){
+                    } else if (playerlvl>KO){
                         continue;
                     }else{
                     enemy.add(new Skelet());
